@@ -1,0 +1,29 @@
+🎨 Frontend (React + Quill.js)
+
+
+1️⃣ Initialize React App
+Run npm create vite@latest.
+Install dependencies: axios, react-quill, react-router-dom.
+
+2️⃣ Setup Routing
+Install react-router-dom.
+Create Home.js, Login.js, Register.js, CreateBlog.js, SingleBlog.js.
+Configure App.js with Routes.
+
+3️⃣ Implement Authentication
+Create login and register forms.
+Store JWT in localStorage after login.
+
+4️⃣ Create Blog Features
+Implement CreateBlog.js with react-quill for rich-text editing.
+Fetch all blogs from backend in Home.js.
+Display full blog content in SingleBlog.js.
+
+5️⃣ Setup API Calls with Axios
+POST /api/auth/register → User signup.
+POST /api/auth/login → User login.
+GET /api/blogs → Fetch all blogs.
+POST /api/blogs → Create new blog.
+
+6️⃣ Run the Frontend
+Start the React app with npm run dev.
