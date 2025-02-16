@@ -45,75 +45,27 @@ MongoDB & Mongoose (Database)
 JWT & bcrypt.js (Authentication & Security)
 
 dotenv (Environment variable management)
-
-Deployment
-
-Frontend: Vercel / Netlify
-
-Backend: Render / Railway
-
+ 
 Database: MongoDB Atlas
-
-📂 Project Structure
-
-Blogify/
-├── client/       # Frontend (React.js)
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-├── server/       # Backend (Node.js + Express)
-│   ├── models/
-│   ├── routes/
-│   ├── server.js
-│   ├── .env
-│   └── package.json
-│
-└── README.md
 
 🚀 Installation & Setup
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/yourusername/blogify.git
+git clone https://github.com/Dhanush12212/Blogify.git
 cd blogify
 
-2️⃣ Backend Setup
-
+2️⃣ Backend Setup 
 cd server
 npm install
+npm start
 
+3️⃣ Frontend Setup 
+cd ../client
+npm install
+npm run dev
+ 
 Create a .env file and add your MongoDB URI & JWT Secret:
 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
-
-Run the backend:
-
-npm start
-
-3️⃣ Frontend Setup
-
-cd ../client
-npm install
-npm start
-
-📜 API Endpoints
-
-Auth Routes
-
-POST /api/auth/register - User registration
-
-POST /api/auth/login - User login
-
-Blog Routes
-
-POST /api/blogs - Create a new blog
-
-GET /api/blogs - Fetch all blogs
-
-GET /api/blogs/:id - Fetch a specific blog
-
-PUT /api/blogs/:id - Update a blog
-
-DELETE /api/blogs/:id - Delete a blog
