@@ -31,4 +31,4 @@ Use app.use("/api/auth", authRoutes).
 Use app.use("/api/blogs", blogRoutes).
 
 7️⃣ Run the Server
-Start the server using node server.js or nodemon
+Start the server using nodemon app.js

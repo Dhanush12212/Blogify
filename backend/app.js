@@ -1,11 +1,20 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-
-dotenv.config();
-
+import loginRoute from './routes/Login.js';
+import registerRoute from './routes/Register.js'; 
 const app = express();
 
+dotenv.config();
+app.use(express.json());
+
+
+//Routing
+app.use('/login',loginRoute);
+app.use('/register', registerRoute);
+ 
+
+//MongoDB Connection
 const connectDB = () => {
     mongoose
     .connect(process.env.MONGODB_URL)
