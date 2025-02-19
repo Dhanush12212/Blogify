@@ -1,39 +1,56 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import * as dotenv from 'dotenv';
-import loginRoute from './routes/Login.js';
-import registerRoute from './routes/Register.js'; 
+import * as dotenv from 'dotenv'; 
+import AuthRoute from './routes/AuthRoute.js';
+import  BlogRoute from './routes/BlogRoute.js';
 const app = express();
 
 dotenv.config();
 app.use(express.json());
 
+const PORT = process.env.PORT || 8080;
 
 //Routing
-app.use('/login',loginRoute);
-app.use('/register', registerRoute);
+app.use('/api/Auth',AuthRoute); 
+app.use('/api/Blog', BlogRoute)
  
 
 //MongoDB Connection
-const connectDB = () => {
-    mongoose
-    .connect(process.env.MONGODB_URL)
-    .then(() => console.log("Connected to MongoDB"))
-    .catch((err) => {
-        console.log("Failed to connect with DB");
-        console.log(err);
-    });
+const connectDB = async() => {
+    try {
+        await mongoose
+        .connect(process.env.MONGODB_URL);
+        console.log(JSON.stringify({ message: "Connected to MongoDB", status: "success" }));
+    } 
+    catch(error) {
+        console.error(
+            JSON.stringify({ 
+                message: "Failed to connect with DB", 
+                status: "error", 
+                error: error.message 
+            })
+        );
+        process.exit(1); // Stop the app if DB connection fails 
+    };
 };
 
-const startServer= () => {
+const startServer= async() => {
     try {
-        connectDB();
-        app.listen(8000,() => {
-            console.log("The server started on port 8000"); 
+        await connectDB();
+        app.listen(PORT,() => {
+            console.log(
+                JSON.stringify({ message: `Server started on port ${PORT}`, status: "success"})
+            );
         });
     }   
     catch(error) {
-        console.log(error);
+        console.error(
+            JSON.stringify({ 
+                message: "Failed to connect with DB", 
+                status: "error", 
+                error: error.message, 
+            })
+        );
     }
 };
 

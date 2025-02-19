@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
 
-const Blog = new model.BlogSchema({
+const BlogSchema = new mongoose.Schema({
     author: {
-        type: 'String',
+        type: String,
         required: true,
     },
     title: {
-        type: 'String',
+        type: String,
         required: true,
     },
-    author: {
-        type: 'String',
+    content: {
+        type: String,
         required: true
     }
 });

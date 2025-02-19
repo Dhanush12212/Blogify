@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import JWT from 'jsonwebtoken';
-import userModel from '../models/user.js';
+import jwt from 'jsonwebtoken';
+import userModel from '../models/user.js'; 
 
 //Registering an user
 export const Register = async(req,res) => {
@@ -18,13 +18,13 @@ export const Register = async(req,res) => {
         const salt = await bcrypt.genSalt( 10 );  
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        user = userModel.create({
+        user = await userModel.create({
             username,
             email,
             password: hashedPassword, 
         });
 
-        let token = JWT.sign({email: user.email, id: user._id}, "Secret", {expiresIn: "1h" }); 
+        let token = jwt.sign({email: user.email, id: user._id}, process.env.SECRET, {expiresIn: "1h" }); 
         res.cookie("token", token, { httpOnly: true, secure: true });
         return res.status(201).send("Successfully Registered"); 
     }   
@@ -32,8 +32,7 @@ export const Register = async(req,res) => {
     {
         console.log(error);
         return res.status(500).send("Something Went Wrong!!");
-    }
-    res.redirect('/Home');
+    } 
 }
 
 
@@ -53,7 +52,7 @@ export const login = async(req,res) => {
             return res.status(401).json({ message: "Invalid password!" });
         }
 
-        let token = JWT.sign({email: user.email, id: user._id}, "Secret", {expiresIn: "1h" }); 
+        let token = jwt.sign({email: user.email, id: user._id}, process.env.JWT_SECRET, {expiresIn: "1h" }); 
         res.cookie("token", token, { httpOnly: true, secure: true });
         return res.status(200).send("Login Successfully");
        
@@ -64,3 +63,4 @@ export const login = async(req,res) => {
         return res.status(500).json({ message: "Internal Server Error" }); 
     }
 }
+ 
