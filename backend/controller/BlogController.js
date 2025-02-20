@@ -16,5 +16,4 @@ export const createBlog = async(req, res) => {
         return res.status(500).json({ message: 'Unable to create a blog!!'});
     }
 };
-
-export default blog;
+ 
