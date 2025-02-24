@@ -1,8 +1,11 @@
 import React from 'react'
+import HomeNav from '../Components/HomeNav'
 
 function Blog() {
   return (
-    <div>Blog</div>
+    <div>
+      <HomeNav/>
+    </div>
   )
 }
 

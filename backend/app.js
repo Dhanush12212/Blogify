@@ -6,18 +6,20 @@ import mongoose from 'mongoose';
 import AuthRoute from './routes/AuthRoute.js';
 import  BlogRoute from './routes/BlogRoute.js';
 import connectDB from './db/connectDB.js';
+import cors from 'cors';
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 8080;
 
 //Routing
 app.use('/api/Auth',AuthRoute); 
-app.use('/api/Blog', BlogRoute)
+app.use('/api/Blog', BlogRoute);
  
 
-const startServer= async() => {
+const startServer = async() => {
     try {
         await connectDB();
         app.listen(PORT,() => {
