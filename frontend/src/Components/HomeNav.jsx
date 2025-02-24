@@ -18,7 +18,7 @@ function HomeNav() {
     }
 
   return (
-    <div className='flex justify-between items-center py-6 px-5 text-blue-900 bg-blue-200 fixed w-full top-0 left-0 z-50'> 
+    <div className='flex justify-between items-center py-6 px-5 text-blue-900 bg-blue-200 fixed w-full top-0 left-0 z-50 '> 
         <h1 className='text-4xl font-bold cursor-pointer'>
           <Link to="/">Blogify</Link>
         </h1>
