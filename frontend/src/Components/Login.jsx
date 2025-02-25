@@ -17,8 +17,12 @@ function Login() {
       const response = await axios.post('http://localhost:8000/api/Auth/login', { 
         email: user, 
         password
-      }); 
-      console.log(response.data);
+      },
+      { withCredentials: true }
+    );  
+      console.log(response.data );
+      // const token = res.data.token;  
+      // localStorage.setItem('token', token);  
       navigate('/blog');
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);

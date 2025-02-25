@@ -18,9 +18,12 @@ function Register() {
         username,
         email,
         password
-      }
+      },
+      { withCredentials: true }
       );
       console.log(response.data);
+      // const token = response.data.token;   
+      // localStorage.setItem('token', token);  
       navigate('/blog');
     }
     catch(error) {

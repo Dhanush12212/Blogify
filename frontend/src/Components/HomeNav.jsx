@@ -9,12 +9,21 @@ function HomeNav() {
 
     const handleLogout = async() => {
         try {
-            await axios.post('http://localhost:8000/api/Auth/logout')
-            navigate('/login');
+            await axios.post('http://localhost:8000/api/Auth/logout', {}, { 
+            withCredentials: true
+        });
+        navigate('/login');
         } catch (error) {
-            console.log("Logout Failed: ",error);
-            
+            console.log("Logout Failed: ",error); 
         }
+        
+        // try {
+        //   localStorage.removeItem("token");  
+        //   console.log("User logged out.");  
+        //   navigate('/login');
+        //   } catch (error) {
+        //       console.log("Logout Failed: ",error); 
+        //   }
     }
 
   return (
