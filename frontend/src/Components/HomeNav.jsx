@@ -5,33 +5,35 @@ import axios from 'axios';
 
 function HomeNav() {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleLogout = async() => {
-        try {
-            await axios.post('http://localhost:8000/api/Auth/logout', {}, { 
-            withCredentials: true
-        });
-        navigate('/login');
-        } catch (error) {
-            console.log("Logout Failed: ",error); 
-        }
-        
-        // try {
-        //   localStorage.removeItem("token");  
-        //   console.log("User logged out.");  
-        //   navigate('/login');
-        //   } catch (error) {
-        //       console.log("Logout Failed: ",error); 
-        //   }
+    // try {
+    //   localStorage.removeItem("token");  
+    //   console.log("User logged out.");  
+    //   navigate('/login');
+    // } catch (error) {
+    //       console.log("Logout Failed: ",error); 
+    // }
+
+  const handleLogout = async () => {
+    try {
+      await axios.post('http://localhost:8000/api/Auth/logout', {}, { 
+      withCredentials: true
+    });
+    navigate('/login');
+    } catch (error) {
+      console.log("Logout Failed: ",error); 
     }
+  };
+  
 
   return (
-    <div className='flex justify-between items-center py-6 px-5 text-blue-900 bg-blue-200 fixed w-full top-0 left-0 z-50 '> 
-        <h1 className='text-4xl font-bold cursor-pointer'>
-          <Link to="/">Blogify</Link>
-        </h1>
-        <ul className='flex gap-6 sm:gap-10 mx-8 font-semibold text-xl'> 
+    <div className='flex justify-between py-6 px-5 text-blue-900 bg-blue-200 fixed w-full top-0 left-0 z-50'> 
+        <h1 className='text-4xl font-bold cursor-none'><Link to="/">Blogify</Link></h1>
+        <ul className='flex gap-10 mx-8 font-semibold text-xl '>
+             <li >
+               <Link to="/myBlogs" className='hover:underline hover:text-2xl transition-all cursor-pointer'>My Blogs</Link> 
+            </li>
             <li className='hover:underline hover:text-2xl transition-all cursor-pointer'>
               <a href="https://github.com/Dhanush12212" target="_blank" rel="noopener noreferrer">About me</a>
             </li>
@@ -40,7 +42,7 @@ function HomeNav() {
             </li>
         </ul>
     </div>
-  );
+  )
 }
 
-export default HomeNav;
+export default HomeNav

@@ -11,11 +11,11 @@ const authMiddleware = async (req, res, next) => {
             return res.status(401).json({ message: "Unauthorized: No token provided" });
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);  // ✅ Ensure JWT_SECRET is correct
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);  
         req.user = decoded;
-        console.log("Decoded User:", decoded);  // ✅ Debugging
+        console.log("Decoded User:", decoded); 
         
-        next();  // ✅ Proceed to the next middleware
+        next();
     } catch (error) {
         console.error("Token validation failed:", error.message);
         return res.status(403).json({ message: "Invalid or expired token" });

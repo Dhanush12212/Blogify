@@ -20,6 +20,7 @@ function Login() {
       },
       { withCredentials: true }
     );  
+      console.log("Login successful:", response.data);
       console.log(response.data );
       // const token = res.data.token;  
       // localStorage.setItem('token', token);  

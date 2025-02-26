@@ -20,16 +20,22 @@ function ReactQuills() {
         [{ 'font': [] }],
         [{ 'align': [] }],
         ['clean']
-    ];
+    ]; 
 
+    const handleChange = (value) => {
+        console.log("Quill content:", value);  
+        setContent(value.trim() ? value : "");
+    };
+    
     return (
-        <div className="w-full p-4 text-center">
+        <div className="w-full p-4 text-center px-20">
             <ReactQuill 
+                name='Content'
                 value={content}
-                onChange={setContent}
+                onChange={handleChange}
                 modules={{ toolbar: toolbarOptions }}
                 theme="snow"
-                className='h-screen bg-zinc-300'
+                className='h-screen bg-zinc-300 '
             /> 
         </div>
     );

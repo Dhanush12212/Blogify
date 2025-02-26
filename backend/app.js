@@ -6,11 +6,13 @@ import mongoose from 'mongoose';
 import AuthRoute from './routes/AuthRoute.js';
 import  BlogRoute from './routes/BlogRoute.js';
 import connectDB from './db/connectDB.js';
-import cors from 'cors';
 import authMiddleware from './middleware/AuthMiddleware.js';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors({
     origin: "http://localhost:5173", 
     credentials: true  
@@ -20,7 +22,7 @@ const PORT = process.env.PORT || 8080;
 
 //Routing
 app.use('/api/Auth',AuthRoute); 
-app.use('/api/Blog',authMiddleware, BlogRoute);
+app.use('/api/Blog', BlogRoute);
  
 
 const startServer = async() => {

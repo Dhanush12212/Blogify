@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-})
+}, { timeseries: true} );
 
 const User = mongoose.model('User', UserSchema);
 export default User;

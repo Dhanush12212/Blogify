@@ -56,7 +56,6 @@ export const Register = async (req, res) => {
 };
 
 
-
 //Login Authorization
 export const Login = async (req, res) => {
     let { email, password } = req.body;
@@ -79,9 +78,13 @@ export const Login = async (req, res) => {
             { expiresIn: "1h" }
         );
 
-        res.cookie("token", token, { httpOnly: true, secure: true });
-        return res.status(200).json({ message: "Login Successfully" });
-
+        res.cookie("token", token, { 
+            httpOnly: true, 
+            secure: process.env.NODE_ENV === "production", 
+            sameSite: "Strict" 
+        });
+        return res.status(200).json({ message: "Login Successfully", existingUser });
+        
     } catch (error) {
         console.error("Error in Login route:", error);
         return res.status(500).json({ message: "Internal Server Error", error });
@@ -89,7 +92,7 @@ export const Login = async (req, res) => {
 };
 
 
-export const Logout = async (req, res) => {
+export const Logout = async (req, res) => { 
     res.clearCookie("token", { 
         httpOnly: true, 
         secure: process.env.NODE_ENV === "production", 
