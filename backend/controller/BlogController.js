@@ -1,9 +1,8 @@
 import blogModel from '../models/Blog.js';
 
 export const createBlog = async(req, res) => {
-    let { title, content} = req.body;
-console.log("Incoming Request Body:", req.body);
-    console.log("User Info from Token:", req.user);
+    let { title, content} = req.body; 
+    
     try { 
         if (!req.user || !req.user.id) {
             return res.status(401).json({ message: "Unauthorized: No user found in request" });
@@ -21,6 +20,21 @@ console.log("Incoming Request Body:", req.body);
     }
 };
 
+//Get All Blogs
 
+const getAllBlogs = async(req,res) => {
+    
+    try { 
+        if (!req.user || !req.user.id) {
+            return res.status(401).json({ message: "Unauthorized: No user found in request" });
+        }
+        const Blog = await blogModel.find({ author: req.user.id });
+        return res.status(200).json({ message: 'Successfully Fetched Blogs' ,  blog: Blog });
+    }
+    catch(error) { 
+        return res.status(500).json({ message: 'Unable to Fetch blog!!', error: error.message});
+    }
 
+}
+ 
  
