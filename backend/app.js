@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 8080;
 
 //Routing
 app.use('/api/Auth',AuthRoute); 
-app.use('/api/Blog', BlogRoute);
+app.use('/api/BlogHome', BlogRoute);
  
 
 const startServer = async() => {

@@ -22,7 +22,7 @@ export const createBlog = async(req, res) => {
 
 //Get All Blogs
 
-const getAllBlogs = async(req,res) => {
+export const getAllBlogs = async(req,res) => {
     
     try { 
         if (!req.user || !req.user.id) {

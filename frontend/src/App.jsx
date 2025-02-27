@@ -3,7 +3,7 @@ import LandingPage from './Pages/LandingPage'
 import Login from './Components/Login'
 import Register from './Components/Register';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Blog from './Pages/Blog';
+import BlogHome from './Pages/BlogHome';
 import MyBlog from './Pages/MyBlogs';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Route path='/' element={ <LandingPage/>}/> 
           <Route path="/login" element={<Login/>}/> 
           <Route path="/register" element={<Register/>}/> 
-          <Route path='/blog' element={<Blog/>}/>
+          <Route path='/blog' element={<BlogHome/>}/>
           <Route path='/myBlogs' element={<MyBlog/>}/>
         </Routes>
       </Router>

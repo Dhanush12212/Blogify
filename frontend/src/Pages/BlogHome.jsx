@@ -6,11 +6,13 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import ShareTo from '../Components/ShareTo'; 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function Blog() {
+function BlogHome() {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const navigate = useNavigate();
  
   const token = localStorage.getItem("token");
 
@@ -18,12 +20,13 @@ function Blog() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/Blog/createBlog",
+        "http://localhost:8000/api/BlogHome/createBlog",
         { title, content },
         { 
           withCredentials: true,  
         }
       );
+      navigate('/myBlogs');
       console.log("Created New Blog: ", response.data);
     } catch (error) {
       console.log("Failed to Create Blog: ", error);
@@ -72,9 +75,9 @@ const handleChange = (value) => {
       </div>
 
       <div className='flex justify-end gap-6 px-20 text-lg font-medium  '>  
-          <button className='border-2 px-6 py-2 rounded hover:bg-green-900 hover:text-white hover:transition-all' onClick={createNewBlog}>Save</button>  
+          <button className='border-2 px-6 py-2 rounded hover:bg-green-900 hover:text-white hover:transition-all cursor-pointer' onClick={createNewBlog}>Save</button>  
             <Popup trigger=
-                {<button className='border-2 px-6 py-2 rounded hover:bg-yellow-300  hover:transition-all'>Share </button>}
+                {<button className='border-2 px-6 py-2 rounded hover:bg-yellow-300 hover:transition-all cursor-pointer'>Share </button>}
                 position="top center"
                 > 
                 <ShareTo/>
@@ -89,7 +92,8 @@ const handleChange = (value) => {
                       onChange={handleChange}
                       modules={{ toolbar: toolbarOptions }}
                       theme="snow"
-                      className='h-screen bg-zinc-300 '
+                      className='h-screen bg-zinc-300 border-3'
+                      placeholder="You Can Start from here.."
                   /> 
         </div>
       
@@ -99,6 +103,6 @@ const handleChange = (value) => {
   )
 }
 
-export default Blog
+export default BlogHome
 
  
