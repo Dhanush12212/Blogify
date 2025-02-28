@@ -11,7 +11,8 @@ import { useNavigate } from 'react-router-dom';
 function BlogHome() {
 
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(""); 
+
   const navigate = useNavigate();
  
   const token = localStorage.getItem("token");
@@ -54,7 +55,8 @@ const handleChange = (value) => {
     console.log("Quill content:", value);  
     setContent(value.trim() ? value : "");
 };
-  
+
+
   return (
     <div>
       <HomeNav/>

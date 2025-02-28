@@ -6,12 +6,19 @@ function MyBlogs() {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
 
-  // Fetch all blogs on component mount
+  // Function to delete a blog from UI after successful deletion
+  const handleDeleteBlog = (deletedBlogId) => {
+    setBlogs((prevBlogs) => prevBlogs.filter(blog => blog._id !== deletedBlogId));
+  };
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/BlogHome/getAllBlogs');
-        setBlogs(response.data.blogs); // Assuming API returns an array of blogs
+        const response = await axios.get('http://localhost:8000/api/BlogHome/getAllBlogs', {
+          withCredentials: true, 
+        });
+        console.log("API Response:", response.data);
+        setBlogs(response.data.blog || []);  
       } catch (error) {
         setError('Error fetching blogs');
         console.error(error);
@@ -30,8 +37,10 @@ function MyBlogs() {
       <div className="flex justify-center mt-12 flex-col items-center gap-10">
         {error ? (
           <p className="text-red-500 text-xl">{error}</p>
-        ) : blogs.length > 0 ? (
-          blogs.map((blog) => <Blog key={blog._id} blog={blog} />)
+        ) : Array.isArray(blogs) && blogs.length > 0 ? (   
+          [...blogs].reverse().map((blog) => (
+            <Blog key={blog._id} blog={blog} onDelete={handleDeleteBlog} />
+          ))
         ) : (
           <p className="text-gray-600 text-xl">No blogs found...</p>
         )}

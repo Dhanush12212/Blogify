@@ -37,4 +37,24 @@ export const getAllBlogs = async(req,res) => {
 
 }
  
+//Delete Blog
+
+export const deleteBlog = async (req, res) => {
+    try {
+        const deletedBlog = await blogModel.findByIdAndDelete(req.params.id); 
+        if (!deletedBlog) {
+            return res.status(404).json({ message: "Blog not found" });
+        } 
+        return res.status(200).json({ message: "Successfully Deleted Blog", blog: deletedBlog });
+    } catch (error) {
+        console.error("Error deleting blog:", error); 
+        return res.status(500).json({ message: "Failed to delete Blog", error: error.message });
+    }
+};
+
  
+// export const updateBlog = async(req,res) => {
+//     try {
+//         const updatedBlog = await
+//     }
+// }
