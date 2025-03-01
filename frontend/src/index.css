@@ -116,3 +116,8 @@ html {
   }
 
 }
+@media (min-width: 650px) {
+   .Blog {
+    width: 800px;
+   } 
+}

@@ -65,46 +65,52 @@ function UpdateBlog() {
   ];
 
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-blue-500 mt-12 py-4 text-center">
-        Time for a Makeover – Update Your Blog!
+    <div className="w-screen h-screen flex flex-col items-center bg-gray-100 p-5">
+      <h1 className="text-4xl font-bold text-blue-600 py-4 text-center">
+      Time for a Makeover – Update Your Blog!
       </h1>
 
-      <form onSubmit={handleUpdateBlog}>
+      <form 
+        onSubmit={handleUpdateBlog} 
+        className="w-full h-full flex flex-col items-center gap-6 bg-white p-8 rounded-lg shadow-lg overflow-auto">
         {/* Title */}
-        <div className="flex justify-center mt-4">
-          <label htmlFor="Title" className="text-2xl mr-3 underline tracking-wider font-semibold">
+        <div className="w-3/4 flex flex-col">
+          <label htmlFor="Title" className="text-xl font-semibold mb-2">
             Title:
           </label>
           <input
             type="text"
-            value={blog.title }
+            value={blog.title}
             onChange={(e) => setBlog({ ...blog, title: e.target.value })}
             name="title"
-            className="border-b-2 outline-none px-5 text-center text-2xl font-medium"
+            className="w-full p-3 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        <div className="flex justify-end gap-6 px-48 text-lg font-medium">
-          <button
-            type="submit"
-            className="border-2 px-8 py-2 rounded hover:bg-green-900 hover:text-white hover:transition-all cursor-pointer"
-          >
-            Save
-          </button>
-        </div>
-
         {/* Text Editor */}
-        <div className="w-full py-3 text-center px-48">
+        <div className="w-3/4 h-full">
+          <label htmlFor="Content" className="text-xl font-semibold mb-2 block">
+            Content:
+          </label>
           <ReactQuill
             name="Content"
             value={blog.content}
             onChange={(value) => setBlog({ ...blog, content: value })}
             modules={{ toolbar: toolbarOptions }}
             theme="snow"
-            className="h-screen bg-zinc-300 border-3"
-            placeholder="You Can Start from here.."
+            className="h-full bg-white border rounded-md"
+            placeholder="Write something amazing..."
           />
+        </div>
+
+        {/* Buttons */}
+        <div className="w-3/4 flex justify-end gap-6 mt-4">
+          <button
+            type="submit"
+            className="px-6 py-3 text-lg font-medium text-white bg-green-600 rounded-lg hover:bg-green-900 transition"
+          >
+            Save Changes
+          </button>
         </div>
       </form>
     </div>

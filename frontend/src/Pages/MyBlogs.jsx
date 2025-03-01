@@ -7,7 +7,6 @@ function MyBlogs() {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
 
-  
   const handleDeleteBlog = (deletedBlogId) => {
     setBlogs((prevBlogs) => prevBlogs.filter(blog => blog._id !== deletedBlogId));
   };
@@ -30,31 +29,31 @@ function MyBlogs() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full min-h-screen bg-gray-100 flex flex-col items-center p-6">
+      {/* Header */}
+      <h1 className="text-5xl font-bold text-blue-700 mt-6 text-center">📖 Explore Your Blogs</h1>
 
-      <h1 className="text-4xl font-bold text-blue-500 text-center mt-5">
-        📖 Explore Your Blogs
-      </h1>
-
-      <div className='flex justify-center mt-10'> 
+      {/* Create New Button */}
+      <div className="mt-6">
         <Link to='/blog'>
-          <button className='border py-3 px-6 text-blue-600 font-bold rounded hover:bg-blue-700 hover:text-white transition-all'>Create New</button>
+          <button className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 transition-all">
+            ➕ Create New Blog
+          </button>
         </Link>
-      
       </div>
 
-      <div className="flex justify-center mt-8 flex-col items-center gap-10">
+      {/* Blog List */}
+      <div className="w-full max-w-3xl mt-10 flex flex-col items-center gap-8">
         {error ? (
-          <p className="text-red-500 text-xl">{error}</p>
-        ) : Array.isArray(blogs) && blogs.length > 0 ? (   
+          <p className="text-red-500 text-xl text-center">{error}</p>
+        ) : Array.isArray(blogs) && blogs.length > 0 ? (
           [...blogs].reverse().map((blog) => (
             <Blog key={blog._id} blog={blog} onDelete={handleDeleteBlog} />
           ))
         ) : (
-          <p className="text-gray-600 text-xl">No blogs found...</p>
+          <p className="text-gray-600 text-xl text-center">No blogs found...</p>
         )}
       </div>
-
     </div>
   );
 }

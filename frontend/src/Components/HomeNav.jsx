@@ -1,48 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function HomeNav() {
-
   const navigate = useNavigate();
-
-    // try {
-    //   localStorage.removeItem("token");  
-    //   console.log("User logged out.");  
-    //   navigate('/login');
-    // } catch (error) {
-    //       console.log("Logout Failed: ",error); 
-    // }
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8000/api/Auth/logout', {}, { 
-      withCredentials: true
-    });
-    navigate('/login');
+      await axios.post("http://localhost:8000/api/Auth/logout", {}, { withCredentials: true });
+      navigate("/login");
     } catch (error) {
-      console.log("Logout Failed: ",error); 
+      console.log("Logout Failed: ", error);
     }
   };
-  
 
   return (
-    <div className='flex justify-between py-6 px-5 text-blue-900 bg-blue-200 fixed w-full top-0 left-0 z-50'> 
-        <h1 className='text-4xl font-bold cursor-none'><Link to="/">Blogify</Link></h1>
-        <ul className='flex gap-10 mx-8 font-semibold text-xl '>
-             <li >
-               <Link to="/myBlogs" className='hover:underline hover:text-2xl transition-all cursor-pointer'>My Blogs</Link> 
-            </li>
-            <li className='hover:underline hover:text-2xl transition-all cursor-pointer'>
-              <a href="https://github.com/Dhanush12212" target="_blank" rel="noopener noreferrer">About me</a>
-            </li>
-            <li >
-              <button className='hover:underline hover:text-2xl transition-all cursor-pointer text-red-500' onClick={handleLogout}>Log out</button>
-            </li>
-        </ul>
-    </div>
-  )
+    <nav className="flex justify-between items-center py-4 px-6 bg-blue-600 text-white fixed w-full top-0 left-0 z-50 shadow-lg">
+      {/* Logo */}
+      <h1 className="text-3xl font-bold tracking-wide">
+        <Link to="/" className="hover:text-gray-300 transition-colors">Blogify</Link>
+      </h1>
+
+      {/* Navigation Links */}
+      <ul className="flex items-center gap-8 text-lg font-medium">
+        <li className="flex items-center">
+          <Link to="/myBlogs" className="hover:text-gray-300 hover:scale-105 transition-transform">My Blogs</Link>
+        </li>
+        <li className="flex items-center">
+          <a href="https://github.com/Dhanush12212" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 hover:scale-105 transition-transform">
+            About Me
+          </a>
+        </li>
+        <li className="flex items-center">
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 px-4 py-2 rounded-lg text-white font-semibold hover:bg-red-700 transition-all"
+          >
+            Log Out
+          </button>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
-export default HomeNav
+export default HomeNav;
