@@ -13,10 +13,7 @@ function BlogHome() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState(""); 
 
-  const navigate = useNavigate();
- 
-  const token = localStorage.getItem("token");
-
+  const navigate = useNavigate(); 
   const createNewBlog = async (e) => {
     e.preventDefault();
     try {
@@ -67,27 +64,27 @@ const handleChange = (value) => {
       {/* Buttons */}
       <div className='flex justify-center'>
           <label htmlFor="Title" className='text-2xl mr-3 underline tracking-wider font-semibold'>Title: </label>
-          <input 
-            type='text'  
+          <input
+            type='text'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             name='title'
             className='border-b-2 outline-none px-5 text-center text-2xl font-medium'
-            />
+          />
       </div>
 
-      <div className='flex justify-end gap-6 px-20 text-lg font-medium  '>  
+      <div className='flex justify-end gap-6 px-48 text-lg font-medium  '>  
           <button className='border-2 px-6 py-2 rounded hover:bg-green-900 hover:text-white hover:transition-all cursor-pointer' onClick={createNewBlog}>Save</button>  
             <Popup trigger=
-                {<button className='border-2 px-6 py-2 rounded hover:bg-yellow-300 hover:transition-all cursor-pointer'>Share </button>}
-                position="top center"
-                > 
-                <ShareTo/>
+              {<button className='border-2 px-6 py-2 rounded hover:bg-yellow-300 hover:transition-all cursor-pointer'>Share </button>}
+              position="top center"
+            > 
+              <ShareTo/>
             </Popup>
       </div> 
 
       {/* Text Editor */} 
-       <div className="w-full p-4 text-center px-20">
+       <div className="w-full py-3 text-center px-48">
                   <ReactQuill 
                       name='Content'
                       value={content}

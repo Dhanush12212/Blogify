@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Blog from '../Components/Blog';
-import axios from 'axios';
+import axios from 'axios'; 
+import { Link } from 'react-router-dom';
 
 function MyBlogs() {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
 
-  // Function to delete a blog from UI after successful deletion
+  
   const handleDeleteBlog = (deletedBlogId) => {
     setBlogs((prevBlogs) => prevBlogs.filter(blog => blog._id !== deletedBlogId));
   };
@@ -30,11 +31,19 @@ function MyBlogs() {
 
   return (
     <div>
+
       <h1 className="text-4xl font-bold text-blue-500 text-center mt-5">
         📖 Explore Your Blogs
       </h1>
 
-      <div className="flex justify-center mt-12 flex-col items-center gap-10">
+      <div className='flex justify-center mt-10'> 
+        <Link to='/blog'>
+          <button className='border py-3 px-6 text-blue-600 font-bold rounded hover:bg-blue-700 hover:text-white transition-all'>Create New</button>
+        </Link>
+      
+      </div>
+
+      <div className="flex justify-center mt-8 flex-col items-center gap-10">
         {error ? (
           <p className="text-red-500 text-xl">{error}</p>
         ) : Array.isArray(blogs) && blogs.length > 0 ? (   
@@ -45,6 +54,7 @@ function MyBlogs() {
           <p className="text-gray-600 text-xl">No blogs found...</p>
         )}
       </div>
+
     </div>
   );
 }

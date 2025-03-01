@@ -21,7 +21,6 @@ export const createBlog = async(req, res) => {
 };
 
 //Get All Blogs
-
 export const getAllBlogs = async(req,res) => {
     
     try { 
@@ -36,9 +35,22 @@ export const getAllBlogs = async(req,res) => {
     }
 
 }
- 
-//Delete Blog
 
+//Get a single Blog
+export const getBlog = async (req, res) => {
+    try {
+        const blog = await blogModel.findById(req.params.id);
+        if (!blog) {
+            return res.status(404).json({ message: "Blog not found" });
+        }
+        return res.status(200).json(blog);
+    } catch (error) {
+        console.error("Error fetching blog:", error);
+        return res.status(500).json({ message: "Failed to fetch blog", error: error.message });
+    }
+};
+ 
+//Delete Blog 
 export const deleteBlog = async (req, res) => {
     try {
         const deletedBlog = await blogModel.findByIdAndDelete(req.params.id); 
@@ -52,9 +64,46 @@ export const deleteBlog = async (req, res) => {
     }
 };
 
- 
-// export const updateBlog = async(req,res) => {
+
+
+// Update Blog
+export const updateBlog = async(req,res) => {
+    try {
+        const updatedBlog = await blogModel.findByIdAndUpdate(
+            req.params.id, 
+            req.body, 
+            {new: true}
+        );
+        return res.status(200).json({ message: "Successfully Updated Blog", blog: updatedBlog});
+    }
+    catch(error) {
+        console.error("Error updating blog: ",  error);
+        return res.status(500).json({ message: "Failed to update Blog", error: error.message});
+        
+    }
+};
+
+
+// export const updateBlog = async (req, res) => {
 //     try {
-//         const updatedBlog = await
+//         const { id } = req.params;
+
+//         // Check if the blog exists before updating
+//         const existingBlog = await blogModel.findById(id);
+//         if (!existingBlog) {
+//             return res.status(404).json({ message: "Blog not found" });
+//         }
+
+//         // Update the blog
+//         const updatedBlog = await blogModel.findByIdAndUpdate(
+//             id, 
+//             req.body, 
+//             { new: true }
+//         );
+
+//         return res.status(200).json({ message: "Successfully Updated Blog", blog: updatedBlog });
+//     } catch (error) {
+//         console.error("Error updating blog:", error);
+//         return res.status(500).json({ message: "Failed to update Blog", error: error.message });
 //     }
-// }
+// };
