@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
   
     try {
-      const response = await axios.post('http://localhost:8000/api/Auth/login', { 
+      const response = await axios.post('https://blogify-8a16.onrender.com/api/Auth/login', { 
         email: user, 
         password
       },

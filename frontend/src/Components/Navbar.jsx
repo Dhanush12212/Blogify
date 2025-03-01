@@ -7,7 +7,7 @@ function Navbar() {
 
   const handleNewBlog = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/BlogHome", {
+      const response = await axios.get("https://blogify-8a16.onrender.com/api/BlogHome", {
         withCredentials: true,
       });
       console.log("User authenticated:", response.data);
