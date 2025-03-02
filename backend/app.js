@@ -14,8 +14,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     origin: [
-        "http://localhost:5173", 
-        "https://blogify-eight-pi.vercel.app",
+        "http://localhost:5173",  
+        "https://blogify-gilt-alpha.vercel.app",
         "https://blogify-h3vywrk2z-dhanush12212s-projects.vercel.app" 
     ],  
     methods: ["GET", "POST", "PUT", "DELETE"],
