@@ -15,7 +15,7 @@ function Blog({ blog, onDelete }) {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `https://blogify-8a16.onrender.com/api/BlogHome/deleteBlog/${blog._id}`,
+        `http://localhost:8000/api/BlogHome/deleteBlog/${blog._id}`,
         {
           withCredentials: true,
         }
@@ -36,7 +36,7 @@ function Blog({ blog, onDelete }) {
   };
 
   return (
-    <div className="Blog w-[95%] max-w-[800px] border-2 rounded-lg shadow-lg hover:shadow-xl h-auto py-6 px-16 flex flex-col md:flex-row justify-between items-start gap-6 transition-all duration-300 bg-zinc-400">
+    <div className="myBlog w-[95%] max-w-[800px] border rounded-lg shadow-lg hover:shadow-xl h-auto py-6 px-16 flex flex-col md:flex-row justify-between items-start gap-6 transition-all duration-300 bg-zinc-400">
   {/* Blog Title */}
   <p className="text-3xl font-bold text-gray-800 flex-shrink-0">{blog.title}</p>
 

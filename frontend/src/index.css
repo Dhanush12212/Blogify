@@ -96,6 +96,32 @@ html {
 .RegisterPage, .LoginPage {
   animation: fadeIn 0.2s ease-in-out forwards;
 }
+@media(max-width: 480px) {
+  .logo {
+    font-size: larger;
+  }
+  .nav {
+    font-size: small;
+    gap:10px;
+    margin-right: 0px;
+  }
+  .heading {
+    font-size:35px;
+  }
+  .desc {
+    font-size: 10px;
+  }
+  .startBtn {
+    padding: 6px 10px;
+    font-size: large;
+  }
+  .Text {
+    font-size: 20px;
+  }
+  .blogContainer {
+    padding: 10px 15px;
+  } 
+}
 
 @keyframes fadeIn {
   0% {
@@ -116,8 +142,16 @@ html {
   }
 
 }
-@media (min-width: 650px) {
-   .Blog {
-    width: 800px;
+@media (max-width: 560px) {
+   .myBlog {
+    padding: 10px;
+    display: flex; 
+    align-items: center;
    } 
+   .editContainer {
+    padding: 10px 6px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+   }
 }

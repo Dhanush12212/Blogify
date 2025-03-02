@@ -10,7 +10,7 @@ function LandingPage() {
 
   const handleGetStarted = async () => {
     try {
-        const response = await axios.get("https://blogify-8a16.onrender.com/api/Blog", { withCredentials: true });
+        const response = await axios.get("http://localhost:8000/api/Blog", { withCredentials: true });
         console.log("User authenticated:", response.data);
         navigate("/blog");  
     } catch (error) {
@@ -31,12 +31,12 @@ function LandingPage() {
 
         {/* Overlay Content */}
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white'>
-          <h1 className='text-[5rem] font-extrabold text-blue-400 drop-shadow-lg'>Blogify</h1>
-          <p className='mt-2 text-2xl text-blue-200 font-semibold drop-shadow-md'>
-            A place where you can create <br />and share your thoughts with the world
+          <h1 className='heading lg:text-7xl sm:text-5xl font-bold text-blue-900 drop-shadow-lg'>Blogify</h1>
+          <p className='desc mt-2 tracking-wide lg:text-2xl md:text-xl text-slate-300 font-semibold drop-shadow-md'>
+            A place where you can create <br />and share your blogs
           </p>
           <Link to="/blog" onClick={handleGetStarted}>
-            <button className='mt-6 px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all'>
+            <button className='startBtn mt-6 lg:px-8 lg:py-4 md:px-5 md:py-3 sm:px-3 sm:py-2  bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all'>
               Get Started
             </button>
           </Link>

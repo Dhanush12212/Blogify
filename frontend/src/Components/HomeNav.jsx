@@ -7,7 +7,7 @@ function HomeNav() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("https://blogify-8a16.onrender.com/api/Auth/logout", {}, { withCredentials: true });
+      await axios.post("http://localhost:8000/api/Auth/logout", {}, { withCredentials: true });
       navigate("/login");
     } catch (error) {
       console.log("Logout Failed: ", error);
@@ -17,12 +17,12 @@ function HomeNav() {
   return (
     <nav className="flex justify-between items-center py-4 px-6 bg-blue-600 text-white fixed w-full top-0 left-0 z-50 shadow-lg">
       {/* Logo */}
-      <h1 className="text-3xl font-bold tracking-wide">
-        <Link to="/" className="hover:text-gray-300 transition-colors">Blogify</Link>
+      <h1 className="logo text-3xl font-bold tracking-wide">
+        <Link to="/" className=" hover:text-gray-300 transition-colors">Blogify</Link>
       </h1>
 
       {/* Navigation Links */}
-      <ul className="flex items-center gap-8 text-lg font-medium">
+      <ul className="nav flex items-center gap-8 text-lg font-medium">
         <li className="flex items-center">
           <Link to="/myBlogs" className="hover:text-gray-300 hover:scale-105 transition-transform">My Blogs</Link>
         </li>
@@ -34,7 +34,7 @@ function HomeNav() {
         <li className="flex items-center">
           <button
             onClick={handleLogout}
-            className="bg-red-500 px-4 py-2 rounded-lg text-white font-semibold hover:bg-red-700 transition-all"
+            className="bg-red-500 px-4 py-2 rounded-lg text-white font-semibold hover:bg-red-700 transition-all cursor-pointer"
           >
             Log Out
           </button>

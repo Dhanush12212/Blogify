@@ -27,7 +27,7 @@ app.use('/api/BlogHome', BlogRoute);
 const startServer = async() => {
     try {
         await connectDB();
-        app.listen(PORT,() => {
+        app.listen(PORT, "0.0.0.0", () => {
             console.log(
                 JSON.stringify({ message: `Server started on port ${PORT}`, status: "success"})
             );

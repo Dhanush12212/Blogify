@@ -6,15 +6,21 @@ import { Link } from 'react-router-dom';
 function MyBlogs() {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
+  const [message, setMessage] = useState("");  
 
+  // Delete blog & show message
   const handleDeleteBlog = (deletedBlogId) => {
     setBlogs((prevBlogs) => prevBlogs.filter(blog => blog._id !== deletedBlogId));
+    setMessage("Blog deleted successfully! 🗑️");  
+
+    
+    setTimeout(() => setMessage(""), 2000);
   };
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('https://blogify-8a16.onrender.com/api/BlogHome/getAllBlogs', {
+        const response = await axios.get('http://localhost:8000/api/BlogHome/getAllBlogs', {
           withCredentials: true, 
         });
         console.log("API Response:", response.data);
@@ -31,7 +37,16 @@ function MyBlogs() {
   return (
     <div className="w-full min-h-screen bg-gray-100 flex flex-col items-center p-6">
       {/* Header */}
-      <h1 className="text-5xl font-bold text-blue-700 mt-6 text-center">📖 Explore Your Blogs</h1>
+      <h1 className="Text lg:text-5xl md:text-4xl sm:text-3xl font-bold text-blue-700 mt-6 text-center">
+        📖 Explore Your Blogs
+      </h1>
+
+      {/* Success Message */}
+      {message && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg w-3/4 text-center mt-4">
+          {message}
+        </div>
+      )}
 
       {/* Create New Button */}
       <div className="mt-6">

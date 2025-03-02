@@ -7,6 +7,7 @@ import axios from "axios";
 function UpdateBlog() {
   const { blogId } = useParams(); // Get blog ID from URL
   const [blog, setBlog] = useState({ title: "", content: "" });
+  const [message, setMessage] = useState("");  
   const navigate = useNavigate();
 
   // Fetch existing blog data
@@ -15,33 +16,32 @@ function UpdateBlog() {
       try {
         const response = await axios.get(
           `http://localhost:8000/api/BlogHome/getBlog/${blogId}`,
-          {
-            withCredentials: true, // ✅ Required to send cookies
-          }
+          { withCredentials: true }
         );
-        console.log("Fetched single blog");
-        
         setBlog(response.data);
       } catch (error) {
         console.error("Failed to fetch blog:", error.response?.data?.message || error.message);
       }
     };
-  
     fetchBlog();
   }, [blogId]);
-  
 
   // Handle Update function
   const handleUpdateBlog = async (e) => {
     e.preventDefault();
     try {
       await axios.put(
-        `https://blogify-8a16.onrender.com/api/BlogHome/updatedBlog/${blogId}`,
+        `http://localhost:8000/api/BlogHome/updatedBlog/${blogId}`,
         blog,
         { withCredentials: true }
       );
-      navigate("/myBlogs");
-      console.log("Blog updated successfully");
+       
+      setMessage("Blog updated successfully! 🎉");
+ 
+      setTimeout(() => {
+        navigate("/myBlogs");
+      }, 2000);
+
     } catch (error) {
       console.error("Failed to update blog:", error.response?.data?.message || error.message);
     }
@@ -66,13 +66,21 @@ function UpdateBlog() {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center bg-gray-100 p-5">
-      <h1 className="text-4xl font-bold text-blue-600 py-4 text-center">
-      Time for a Makeover – Update Your Blog!
+      <h1 className="lg:text-4xl md:text-3xl sm:text-2xl font-bold text-blue-600 py-4 text-center">
+        Time for a Makeover – Update Your Blog!
       </h1>
+
+      {/*  Success Message */}
+      {message && (
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg w-3/4 text-center">
+          {message}
+        </div>
+      )}
 
       <form 
         onSubmit={handleUpdateBlog} 
-        className="w-full h-full flex flex-col items-center gap-6 bg-white p-8 rounded-lg shadow-lg overflow-auto">
+        className="blogContainer w-full h-full flex flex-col items-center gap-6 bg-white py-10 px-5 rounded-lg shadow-lg overflow-auto"
+      >
         {/* Title */}
         <div className="w-3/4 flex flex-col">
           <label htmlFor="Title" className="text-xl font-semibold mb-2">
@@ -88,7 +96,7 @@ function UpdateBlog() {
         </div>
 
         {/* Text Editor */}
-        <div className="w-3/4 h-full">
+        <div className="lg:w-3/4 md:w-[80%] h-full">
           <label htmlFor="Content" className="text-xl font-semibold mb-2 block">
             Content:
           </label>
@@ -103,11 +111,11 @@ function UpdateBlog() {
           />
         </div>
 
-        {/* Buttons */}
-        <div className="w-3/4 flex justify-end gap-6 mt-4">
+        {/* Save Button */}
+        <div className="w-3/4 flex justify-end gap-6 mt-20">
           <button
             type="submit"
-            className="px-6 py-3 text-lg font-medium text-white bg-green-600 rounded-lg hover:bg-green-900 transition"
+            className="px-6 py-3 text-lg font-medium text-white bg-green-600 rounded-lg hover:bg-green-900 transition cursor-pointer"
           >
             Save Changes
           </button>
