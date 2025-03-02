@@ -22,6 +22,8 @@ const PORT = process.env.PORT || 10000;
 //Routing
 app.use('/api/Auth',AuthRoute); 
 app.use('/api/BlogHome', BlogRoute);
+app.use('/api/Blog', BlogRoute);
+
  
 
 // const startServer = async() => {

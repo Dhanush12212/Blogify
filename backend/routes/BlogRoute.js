@@ -7,7 +7,11 @@ router.post('/createBlog', authMiddleware, createBlog);
 router.get('/getAllBlogs', authMiddleware, getAllBlogs);
 router.get("/getBlog/:id", authMiddleware, getBlog); 
 router.delete('/deleteBlog/:id', authMiddleware, deleteBlog);
-router.put("/updatedBlog/:id", authMiddleware, updateBlog); 
+router.put("/updatedBlog/:id", authMiddleware, updateBlog);  
+ 
+router.get('/', async (req, res) => {
+    res.json({ message: "Blog route is working" });
+}); 
 
 export default router;
  
