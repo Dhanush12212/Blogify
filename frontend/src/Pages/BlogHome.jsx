@@ -18,7 +18,7 @@ function BlogHome() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/BlogHome/createBlog",
+        "http://localhost:10000/api/BlogHome/createBlog",
         { title, content },
         { withCredentials: true }
       );

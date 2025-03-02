@@ -20,7 +20,7 @@ function MyBlogs() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/BlogHome/getAllBlogs', {
+        const response = await axios.get('http://localhost:10000/api/BlogHome/getAllBlogs', {
           withCredentials: true, 
         });
         console.log("API Response:", response.data);

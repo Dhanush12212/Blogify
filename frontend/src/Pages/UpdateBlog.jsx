@@ -15,7 +15,7 @@ function UpdateBlog() {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/BlogHome/getBlog/${blogId}`,
+          `http://localhost:10000/api/BlogHome/getBlog/${blogId}`,
           { withCredentials: true }
         );
         setBlog(response.data);
@@ -31,7 +31,7 @@ function UpdateBlog() {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:8000/api/BlogHome/updatedBlog/${blogId}`,
+        `http://localhost:10000/api/BlogHome/updatedBlog/${blogId}`,
         blog,
         { withCredentials: true }
       );

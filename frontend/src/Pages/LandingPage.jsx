@@ -10,7 +10,7 @@ function LandingPage() {
 
   const handleGetStarted = async () => {
     try {
-        const response = await axios.get("http://localhost:8000/api/Blog", { withCredentials: true });
+        const response = await axios.get("http://localhost:10000/api/Blog", { withCredentials: true });
         console.log("User authenticated:", response.data);
         navigate("/blog");  
     } catch (error) {
