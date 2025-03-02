@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ["http://localhost:5173" ,"https://blogify-eight-pi.vercel.app/"],  
+    origin: ["http://localhost:5173" ,"https://blogify-eight-pi.vercel.app"],  
     credentials: true  
 }));
 
