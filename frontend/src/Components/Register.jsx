@@ -17,7 +17,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "http://localhost:10000/api/Auth/register",
+        "https://blogify-bx4x.onrender.com/api/Auth/register",
         { username, email, password },
         { withCredentials: true }
       );
