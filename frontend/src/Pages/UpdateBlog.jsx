@@ -31,7 +31,7 @@ function UpdateBlog() {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:8000/api/BlogHome/updatedBlog/${blogId}`,
+        `https://blogify-8a16.onrender.com/api/BlogHome/updatedBlog/${blogId}`,
         blog,
         { withCredentials: true }
       );

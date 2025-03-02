@@ -7,7 +7,7 @@ function HomeNav() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8000/api/Auth/logout", {}, { withCredentials: true });
+      await axios.post("https://blogify-8a16.onrender.com/api/Auth/logout", {}, { withCredentials: true });
       navigate("/login");
     } catch (error) {
       console.log("Logout Failed: ", error);

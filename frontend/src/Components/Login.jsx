@@ -15,12 +15,21 @@ function Login() {
     e.preventDefault();
 
     try {
+<<<<<<< HEAD
       const response = await axios.post(
         "http://localhost:8000/api/Auth/login",
         { email: user, password },
         { withCredentials: true }
       );
 
+=======
+      const response = await axios.post('https://blogify-8a16.onrender.com/api/Auth/login', { 
+        email: user, 
+        password
+      },
+      { withCredentials: true }
+    );  
+>>>>>>> a12af249bf147c50e1b6b4631063fc401e19b5bc
       console.log("Login successful:", response.data);
 
       // Show success message
