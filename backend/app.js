@@ -17,7 +17,7 @@ app.use(cors({
     credentials: true
 }));
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 10000;
 
 //Routing
 app.use('/api/Auth',AuthRoute); 
@@ -62,7 +62,7 @@ const connectDB = () => {
   const startServer = async () => {
     try {
       connectDB();
-      app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+      app.listen(PORT, "0.0.0.0", () => console.log(`Server started on port ${PORT}`));
     } catch (error) {
       console.log(error);
     }
