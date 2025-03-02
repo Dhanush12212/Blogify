@@ -18,7 +18,7 @@ function BlogHome() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://blogify-8a16.onrender.com/api/BlogHome/createBlog",
+        "http://localhost:8000/api/BlogHome/createBlog",
         { title, content },
         { withCredentials: true }
       );

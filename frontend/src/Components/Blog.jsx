@@ -15,7 +15,7 @@ function Blog({ blog, onDelete }) {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `https://blogify-8a16.onrender.com/api/BlogHome/deleteBlog/${blog._id}`,
+        `http://localhost:8000/api/BlogHome/deleteBlog/${blog._id}`,
         {
           withCredentials: true,
         }
