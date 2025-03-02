@@ -13,16 +13,21 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ["http://localhost:5173" ,"https://blogify-eight-pi.vercel.app"],  
+    origin: [
+        "http://localhost:5173", 
+        "https://blogify-eight-pi.vercel.app",
+        "https://blogify-h3vywrk2z-dhanush12212s-projects.vercel.app" 
+    ],  
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true  
 }));
+
 
 const PORT = process.env.PORT || 10000;
 
 //Routing
 app.use('/api/Auth',AuthRoute); 
-app.use('/api/BlogHome', BlogRoute);
-app.use('/api/Blog', BlogRoute);
+app.use('/api/BlogHome', BlogRoute); 
 
  
 
