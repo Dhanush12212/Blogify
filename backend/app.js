@@ -13,8 +13,8 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
-    credentials: true
+    origin: ["http://localhost:5173", "https://blogify-sooty-gamma.vercel.app"],  
+    credentials: true  
 }));
 
 const PORT = process.env.PORT || 10000;

@@ -12,7 +12,7 @@ function ShareTo() {
   const [currentLocation, setCurrentLocation] = useState("");
 
   useEffect(() => {
-    setCurrentLocation(window.location.href); // Change this URL after hosting
+    setCurrentLocation(window.location.href); 
   }, []);
 
   return (
