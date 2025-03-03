@@ -18,6 +18,7 @@ function App() {
           <Route path='/blog' element={<BlogHome/>}/>
           <Route path='/myBlogs' element={<MyBlog/>}/>
           <Route path='/updateBlog/:blogId' element={<UpdateBlog/>}/>
+          <Route path="*" element={<h1>404 - Page Not Found</h1>} />  
         </Routes>
       </Router>
     </div>
