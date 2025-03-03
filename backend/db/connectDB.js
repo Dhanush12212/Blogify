@@ -18,7 +18,7 @@ const connectDB = async() => {
                 error: error.message 
             })
         );
-        process.exit(1); // Stop the app if DB connection fails 
+        process.exit(1);  
     };
 };
 
