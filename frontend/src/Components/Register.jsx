@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
 import { User, Mail, Lock } from "lucide-react";  
+import API_URL from "../../config";
 
 function Register() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "https://blogify-bx4x.onrender.com/api/Auth/register",
+        `${API_URL}/Auth/register`,
         { username, email, password },
         { withCredentials: true }
       );

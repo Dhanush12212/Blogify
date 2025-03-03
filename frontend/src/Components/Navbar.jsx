@@ -1,13 +1,14 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from "../../config";
 
 function Navbar() {
   const navigate = useNavigate();
 
   const handleNewBlog = async () => {
     try {
-      const response = await axios.get("https://blogify-bx4x.onrender.com/api/BlogHome", {
+      const response = await axios.get(`${API_URL}/BlogHome`, {
         withCredentials: true,
       });
       console.log("User authenticated:", response.data);

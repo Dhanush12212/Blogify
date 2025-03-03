@@ -1,13 +1,14 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from "../../config";
 
 function HomeNav() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      await axios.post("https://blogify-bx4x.onrender.com/api/Auth/logout", {}, { withCredentials: true });
+      await axios.post(`${API_URL}/Auth/logout`, {}, { withCredentials: true });
       navigate("/login");
     } catch (error) {
       console.log("Logout Failed: ", error);

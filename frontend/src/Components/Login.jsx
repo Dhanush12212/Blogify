@@ -4,6 +4,7 @@ import { assets } from "../assets/assets";
 import Navbar from "./Navbar";
 import axios from "axios";
 import { Mail, Lock } from "lucide-react";  
+import API_URL from "../../config";
 
 function Login() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function Login() {
 
     try { 
       const response = await axios.post(
-        "https://blogify-bx4x.onrender.com/api/Auth/login",
+        `${API_URL}/Auth/login`,
         { email: user, password },
         { withCredentials: true }
       );   

@@ -4,13 +4,14 @@ import { assets } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_URL from "../../config";
 
 function LandingPage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const handleGetStarted = async () => {
     try {
-        const response = await axios.get("https://blogify-bx4x.onrender.com/api/Blog", { withCredentials: true });
+        const response = await axios.get(`${API_URL}/Blog`, { withCredentials: true });
         console.log("User authenticated:", response.data);
         navigate("/blog");  
     } catch (error) {

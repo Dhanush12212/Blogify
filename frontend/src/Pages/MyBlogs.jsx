@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Blog from '../Components/Blog';
 import axios from 'axios'; 
 import { Link } from 'react-router-dom';
+import API_URL from "../../config";
 
 function MyBlogs() {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
-  const [message, setMessage] = useState("");  
+  const [message, setMessage] = useState("");   
 
   // Delete blog & show message
   const handleDeleteBlog = (deletedBlogId) => {
@@ -20,7 +21,7 @@ function MyBlogs() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('https://blogify-bx4x.onrender.com/api/BlogHome/getAllBlogs', {
+        const response = await axios.get(`${API_URL}/BlogHome/getAllBlogs`, {
           withCredentials: true, 
         });
         console.log("API Response:", response.data);

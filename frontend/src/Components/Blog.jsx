@@ -4,6 +4,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../../config";
 
 function Blog({ blog, onDelete }) {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Blog({ blog, onDelete }) {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `https://blogify-bx4x.onrender.com/api/BlogHome/deleteBlog/${blog._id}`,
+        `${API_URL}/BlogHome/deleteBlog/${blog._id}`,
         {
           withCredentials: true,
         }

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import API_URL from "../../config";
 
 function UpdateBlog() {
   const { blogId } = useParams(); // Get blog ID from URL
@@ -15,7 +16,7 @@ function UpdateBlog() {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(
-          `https://blogify-bx4x.onrender.com/api/BlogHome/getBlog/${blogId}`,
+          `${API_URL}/BlogHome/getBlog/${blogId}`,
           { withCredentials: true }
         );
         setBlog(response.data);
@@ -31,7 +32,7 @@ function UpdateBlog() {
     e.preventDefault();
     try {
       await axios.put(
-        `https://blogify-bx4x.onrender.com/api/BlogHome/updatedBlog/${blogId}`,
+        `${API_URL}/BlogHome/updatedBlog/${blogId}`,
         blog,
         { withCredentials: true }
       );

@@ -7,18 +7,20 @@ import "reactjs-popup/dist/index.css";
 import ShareTo from "../Components/ShareTo";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../../config";
 
 function BlogHome() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [message, setMessage] = useState("");  
   const navigate = useNavigate();
- 
+  
+
   const createNewBlog = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://blogify-bx4x.onrender.com/api/BlogHome/createBlog",
+        `${API_URL}/BlogHome/createBlog`,
         { title, content },
         { withCredentials: true }
       );
