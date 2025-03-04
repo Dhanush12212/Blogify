@@ -41,7 +41,7 @@ export const Register = async (req, res) => {
         res.cookie("token", token, { 
             httpOnly: true, 
             secure: process.env.NODE_ENV === "production", 
-            sameSite: "Strict" 
+            sameSite: "None" 
         });
 
         // Exclude password before sending response
@@ -81,7 +81,7 @@ export const Login = async (req, res) => {
         res.cookie("token", token, { 
             httpOnly: true, 
             secure: process.env.NODE_ENV === "production", 
-            sameSite: "Strict" 
+            sameSite: "None" 
         });
         return res.status(200).json({ message: "Login Successfully", existingUser });
         

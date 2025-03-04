@@ -21,9 +21,9 @@ function MyBlogs() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${API_URL}/BlogHome/getAllBlogs`, {
-          withCredentials: true, 
-        });
+        const response = await axios.get(`${API_URL}/BlogHome/getAllBlogs`, 
+          { withCredentials: true }
+        );
         console.log("API Response:", response.data);
         setBlogs(response.data.blog || []);  
       } catch (error) {

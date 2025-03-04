@@ -8,9 +8,11 @@ function Navbar() {
 
   const handleNewBlog = async () => {
     try {
-      const response = await axios.get(`${API_URL}/BlogHome`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(`${API_URL}/BlogHome`, 
+        {
+        withCredentials: true
+      }
+    );
       console.log("User authenticated:", response.data);
       navigate("/blog");
     } catch (error) {

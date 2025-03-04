@@ -8,7 +8,9 @@ function HomeNav() {
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${API_URL}/Auth/logout`, {}, { withCredentials: true });
+      await axios.post(`${API_URL}/Auth/logout`, {},
+         { withCredentials: true }
+        );
       navigate("/login");
     } catch (error) {
       console.log("Logout Failed: ", error);
