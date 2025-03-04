@@ -38,7 +38,7 @@ function LandingPage() {
           <p className='desc mt-2 tracking-wide lg:text-2xl md:text-xl text-slate-300 font-semibold drop-shadow-md'>
             A place where you can create <br />and share your blogs
           </p>
-          <Link to="/blog" onClick={handleGetStarted}>
+          <Link to="/login" onClick={handleGetStarted}>
             <button className='startBtn mt-6 lg:px-8 lg:py-4 md:px-5 md:py-3 sm:px-3 sm:py-2  bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xl font-bold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all'>
               Get Started
             </button>

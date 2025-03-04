@@ -30,9 +30,9 @@ return (
 
     {/* Navigation Links */}
     <ul className="nav flex gap-6 justify-around md:text-xl sm:text-lg xs:text-sm font-medium ml-8">
-      <li className="hover:scale-105 transition-transform">
+      {/* <li className="hover:scale-105 transition-transform">
         <Link to="/blog" onClick={handleNewBlog} className="hover:text-gray-300">New Blog</Link>
-      </li>
+      </li> */}
       <li className="hover:scale-105 transition-transform">
         <Link to="/login" className="hover:text-gray-300">Sign Up</Link>
       </li>
