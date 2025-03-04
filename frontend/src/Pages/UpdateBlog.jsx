@@ -113,7 +113,7 @@ function UpdateBlog() {
         </div>
 
         {/* Save Button */}
-        <div className="w-3/4 flex justify-end gap-6 mt-20">
+        <div className="w-3/4 flex justify-end gap-6 mt-20 z-10">
           <button
             type="submit"
             className="px-6 py-3 text-lg font-medium text-white bg-green-600 rounded-lg hover:bg-green-900 transition cursor-pointer"
