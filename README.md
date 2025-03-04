@@ -50,12 +50,12 @@ Blogify is your go-to full-stack blogging platform, designed to make content cre
  
 5. Start Backend Server:
 
-   - Start the backend server using the command: `cd backend` and then `npm app.js`.
+   - Start the backend server using the command: `cd backend` and then `npm start`.
 
 6. Start Frontend:
 
-   - Finally, initiate the frontend with the command: `cd frontend` and then `npm run dev`.
+   - Finally, initiate the frontend with the command: `cd frontend` and then `npm start`.
 
-7. Open `http://localhost:3000` with your browser to see the app
+7. Open `http://localhost:5173` with your browser to see the app
 
  
