@@ -41,7 +41,7 @@ export const Register = async (req, res) => {
         res.cookie("token", token, { 
             httpOnly: true, 
             secure: process.env.NODE_ENV === "production", 
-            sameSite: "None" 
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
         });
 
         // Exclude password before sending response
@@ -81,7 +81,7 @@ export const Login = async (req, res) => {
         res.cookie("token", token, { 
             httpOnly: true, 
             secure: process.env.NODE_ENV === "production", 
-            sameSite: "None" 
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
         });
         return res.status(200).json({ message: "Login Successfully", existingUser });
         
@@ -96,7 +96,7 @@ export const Logout = async (req, res) => {
     res.clearCookie("token", { 
         httpOnly: true, 
         secure: process.env.NODE_ENV === "production", 
-        sameSite: "None" 
+        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
     });
 
     return res.status(200).json({ message: "Logout successful" });
